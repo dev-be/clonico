@@ -11,31 +11,61 @@
     <div class="card">
         <h2 class="text-center">Junte-se ao Clonico</h2>
         <p class="text-center">Crie sua conta e encontre seu Player</p>
-        <form>
+        <form action="/post_cadastro" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Seu nome" required>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="nome"
+                name="nome"
+                placeholder="Seu nome" required>
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Seu sobrenome" required>
+                <input 
+                type="email" 
+                class="form-control" 
+                id="email"
+                name="email"
+                placeholder="seu-email@exemplo.com" required>
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control" placeholder="seu-email@exemplo.com" required>
+                <input 
+                type="telefone" 
+                class="form-control" 
+                id="telefone"
+                name="telefone"
+                placeholder="Telefone" required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" placeholder="Senha" required>
+                <input 
+                type="date" 
+                class="form-control" 
+                id="data_nascimento"
+                name="data_nascimento"
+                placeholder="Data de nascimento " required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" placeholder="Confirme a Senha" required>
+                <input 
+                type="password" 
+                class="form-control" 
+                id="senha"
+                name="senha"
+                placeholder="Senha" required>
             </div>
             <div class="mb-3">
-                <input type="date" class="form-control" placeholder="Data de nascimento ">
+                <input 
+                type="password" 
+                class="form-control" 
+                id="confirmar_senha"
+                name="confirmar_senha"
+                placeholder="Confirme a Senha" required>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="terms" required>
                 <label class="form-check-label" for="terms">Eu concordo com os Termos de Serviço e Política de Privacidade</label>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary" onclick="location.href='#'" >Criar Conta</button>
+                <button type="submit" class="btn btn-primary" >Criar Conta</button>
             </div>
             <div class="text-center my-3">
                 <span>Ou inscreva-se com</span>

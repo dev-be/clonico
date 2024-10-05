@@ -1,5 +1,5 @@
-DROP TABLE usuario;
 DROP TABLE inte_por_usuario;
+DROP TABLE usuario;
 DROP TABLE interesse_jogos;
 
 DELETE FROM interesse_jogos;
@@ -59,24 +59,25 @@ CREATE TABLE IF NOT EXISTS inte_por_usuario (
 );
 
 --INSERE  DADOS NA TABELA  interesse_jogos
-INSERT INTO interesse_jogos(interesse)
-	VALUES('RPG'),
-	('FPS'),
-	('MOBA'),
-	('Estratégia'),
-	('Simulação'),
-	('Esportes'),
-	('Corrida'),
-	('Aventura'),
-	('Puzzle'),
-	('Ação'),
-	('MMO'),
-	('Indie'),
-	('Retro'),
-	('Battle Royale'),
-	('Sandbox'),
-	('Survival'),
-	('Horror'),
-	('Plataforma'),
-	('Luta'),
-	('Música')
+INSERT OR IGNORE INTO interesse_jogos(interesse)
+VALUES
+    ('RPG'),
+    ('FPS'),
+    ('MOBA'),
+    ('Estratégia'),
+    ('Simulação'),
+    ('Esportes'),
+    ('Corrida'),
+    ('Aventura'),
+    ('Puzzle'),
+    ('Ação'),
+    ('MMO'),
+    ('Indie'),
+    ('Retro'),
+    ('Battle Royale'),
+    ('Sandbox'),
+    ('Survival'),
+    ('Horror'),
+    ('Plataforma'),
+    ('Luta'),
+    ('Música');

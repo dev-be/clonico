@@ -1,0 +1,35 @@
+body {
+    background: linear-gradient(135deg, #6e00ff, #9b00ff);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.icon {
+    font-size: 5rem;
+    margin-bottom: 10px;
+}
+.error-container {
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+.error-container h1 {
+    font-size: 5em;
+    margin-bottom: 20px;
+}
+.error-container p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+.error-container a {
+    color: white;
+    text-decoration: underline;
+    font-size: 1.2em;
+}
