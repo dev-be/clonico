@@ -41,3 +41,11 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
             return usuario
         else:
             return None
+        
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def get_user(db: Session, username: str):
+    return db.query(User).filter(User.username == username).first()
+
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(plain_password, hashed_password)

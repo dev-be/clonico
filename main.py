@@ -2,6 +2,7 @@ from fastapi import FastAPI, Form, Request
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from sqlalchemy import Session
 import uvicorn
 
 from models.usuario_model import Usuario
@@ -52,6 +53,17 @@ def post_cadastro(
 def get_login(request: Request):
    return template.TemplateResponse("login.html", {"request": request})
 
+@app.post("/login")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    user = get_user(form_data.username)
+    if not user or not verify_password(form_data.password, user.hashed_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid credentials",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    
+    return {"message": "Login bem-sucedido!"}
 
 if __name__ == "__main__":
  uvicorn.run("main:app", port=8000, reload=True)
