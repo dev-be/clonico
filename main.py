@@ -38,7 +38,7 @@ def post_cadastro(
       usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
       usuario_repo.inserir(usuario)
       if usuario:
-         return RedirectResponse(f"/interesses?user_id", 303)
+         return RedirectResponse(f"/interesses", 303)
       
       else:
          return RedirectResponse("/cadastro", 303)
