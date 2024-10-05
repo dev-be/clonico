@@ -37,15 +37,14 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
         ))
 
         if db.rowcount > 0:
-            usuario.id = db.lastrowid
-            return usuario
+            usuario.id_usuario = db.lastrowid
+            return print(f"{usuario}")
         else:
             return None
         
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-def get_user(db: Session, username: str):
-    return db.query(User).filter(User.username == username).first()
+# def get_user(db: Session, username: str):
+#     return db.query(Usuario).filter(Usuario.nome == username).first()
 
-def verify_password(plain_password, hashed_password):
-    return pwd_context.verify(plain_password, hashed_password)
+# def verify_password(plain_password, hashed_password):
+#     return pwd_context.verify(plain_password, hashed_password)
