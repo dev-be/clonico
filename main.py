@@ -1,4 +1,3 @@
-from sqlite3 import IntegrityError
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -34,25 +33,17 @@ def post_cadastro(
    data_nascimento: str = Form(...),
    senha: str = Form(...),
    confirmar_senha: str = Form(...)):
-   if senha != confirmar_senha:
+   if senha == confirmar_senha:
       #cadastrar_contato(nome, data_nasc, telefone, email, senha)
-      return  template.TemplateResponse("/cadastro?error=senhas_diferentes", 303)
-   usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
-   try:
-      usuario_id = usuario_repo.inserir(usuario)
-      return RedirectResponse(f"/interesses?user_id={usuario_id}", 303)
-   except IntegrityError:
-      return template.TemplateResponse("/cadastro?error=usuario_ja_cadastrado", 303)
-   except Exception as e:
-      return template.TemplateResponse("/cadastro?error=erro_ao_cadastrar", 303)
-
-   #    if usuario:
-   #       return RedirectResponse(f"/interesses?user_id", 303)
+      usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
+      usuario_repo.inserir(usuario)
+      if usuario:
+         return RedirectResponse(f"/interesses?user_id", 303)
       
-   #    else:
-   #       return RedirectResponse("/cadastro", 303)
-   # else:
-   #    return RedirectResponse("/cadastro", 303)
+      else:
+         return RedirectResponse("/cadastro", 303)
+   else:
+      return RedirectResponse("/cadastro", 303)
 
 # @app.post("/intesses")
 # def post_interesses(request: Request, interesses: str = Form(...)):
