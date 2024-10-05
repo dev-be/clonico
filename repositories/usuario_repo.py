@@ -1,5 +1,5 @@
 from typing import Optional
-from models.usuario_model import Usuario
+from models.usuario_model import *
 from sql.usuario_sql import *
 from util import obter_conexao
 
@@ -41,7 +41,12 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
             return print(f"{usuario}")
         else:
             return None
-        
+
+def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_INSERIR_INTERESSE_USUARIO, (interesse.id_usuario, interesse.)
+
 
 # def get_user(db: Session, username: str):
 #     return db.query(Usuario).filter(Usuario.nome == username).first()

@@ -15,5 +15,5 @@ class Usuario:
 @dataclass
 class Iteresses:
     id: Optional[int] = None
-    usuario:  Optional[Usuario] = None
+    usuario:  Optional[str] = None
     interesse:  Optional[str] = None
