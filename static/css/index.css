@@ -1,0 +1,89 @@
+body {
+    background: linear-gradient(135deg, #6e00ff, #9b00ff);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.header a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+.main-content {
+    margin-top: 100px;
+}
+.main-content h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+.main-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.main-content .form-inline {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.main-content .form-inline input {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+.main-content .form-inline button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #4B0082;
+    color: white;
+}
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+.features div {
+    width: 200px;
+    margin-bottom: 20px;
+}
+.features i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.footer {
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #4B0082;
+}
+.footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+@media (max-width: 768px) {
+    .main-content h1 {
+        font-size: 36px;
+    }
+    .main-content p {
+        font-size: 16px;
+    }
+    .main-content .form-inline {
+        flex-direction: column;
+    }
+    .main-content .form-inline input {
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        margin-bottom: 10px;
+    }
+    .main-content .form-inline button {
+        width: 100%;
+        border-radius: 0 0 5px 5px;
+    }
+}

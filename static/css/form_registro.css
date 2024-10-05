@@ -1,0 +1,38 @@
+body {
+    background: linear-gradient(135deg, #6e00ff, #9b00ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    color: white;
+}
+.form-control {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+}
+.form-control::placeholder {
+    color: #d1c4e9;
+}
+.form-check-label {
+    color: #d1c4e9;
+}
+.btn-outline-light:hover {
+    background-color: white;
+    color: #4B0082;
+}
+.form-check-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+.text-muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<head>
+    <title>Clonico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/login">Entrar</a>
+        <a href="/cadastro">Cadastre-se</a>
+    </div>
+    <div class="main-content">
+        <h1>Encontre seu Player</h1>
+        <p>Conecte-se com gamers que compartilham sua paixão. Faça match, jogue junto e quem sabe encontre o amor nos
+            servidores.</p>
+        <div class="form-inline">
+            <input type="text" placeholder="Qual é o seu nick?">
+            <button>Começar</button>
+        </div>
+        <p>Ao se inscrever, você concorda com nossos <a href="#"
+                style="color: white; text-decoration: underline;">Termos e Condições</a>.</p>
+    </div>
+    <div class="features">
+        <div>
+            <i class="fas fa-fire"></i>
+            <h4>Matches</h4>
+            <p>Encontre conexões com gamers que compartilham seus interesses</p>
+        </div>
+        <div>
+            <i class="fas fa-user"></i>
+            <h4>Perfil Gamer</h4>
+            <p>Mostre seus jogos favoritos e conquistas</p>
+        </div>
+        <div>
+            <i class="fas fa-comments"></i>
+            <h4>Chat em Tempo Real</h4>
+            <p>Converse sobre estratégias, builds e muito mais</p>
+        </div>
+        <div>
+            <i class="fas fa-users"></i>
+            <h4>Comunidade</h4>
+            <p>Participe de grupos e eventos para gamers</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2024 Clonico. Todos os direitos reservados.</p>
+        <a href="#">Termos de Serviço</a>
+        <a href="#">Privacidade</a>
+    </div>
+</body>
+
+    {% endblock %}
