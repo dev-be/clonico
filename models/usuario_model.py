@@ -13,7 +13,7 @@ class Usuario:
     senha: Optional[str] = None
 
 @dataclass
-class Iteresses:
+class Interesses:
     id: Optional[int] = None
     usuario:  Optional[str] = None
     interesse:  Optional[str] = None

@@ -6,7 +6,7 @@ from fastapi.templating import Jinja2Templates
 # from sqlalchemy import Session
 import uvicorn
 
-from models.usuario_model import Usuario
+from models.usuario_model import Usuario, Interesses
 from repositories import usuario_repo
 
 usuario_repo.criar_tabela()
@@ -35,24 +35,46 @@ def post_cadastro(
    data_nascimento: str = Form(...),
    senha: str = Form(...),
    confirmar_senha: str = Form(...)):
-   if senha == confirmar_senha:
-      #cadastrar_contato(nome, data_nasc, telefone, email, senha)
-      usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
-      usuario_repo.inserir(usuario)
-      if usuario:
-         return RedirectResponse(f"/interesses", 303)
+   if senha != confirmar_senha:
+        return RedirectResponse("/cadastro?error=senhas_diferentes", status_code=303)
+
+   # if usuario_repo.email_existe(email):
+   #      return RedirectResponse("/cadastro?error=email_ja_cadastrado", status_code=303)
+
+   usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
+
+   try:
+      usuario_id = usuario_repo.inserir(usuario)
+      return RedirectResponse(f"/interesses?user_id={usuario_id}", status_code=303)
+
+   except Exception as e:
+      return RedirectResponse("/cadastro?error=erro_inesperado", status_code=303)
+   
+   # if senha == confirmar_senha:
+   #    #cadastrar_contato(nome, data_nasc, telefone, email, senha)
+   #    usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
+   #    usuario_repo.inserir(usuario)
+   #    if usuario:
+   #       return RedirectResponse(f"/interesses", 303)
       
-      else:
-         return RedirectResponse("/cadastro", 303)
-   else:
-      return RedirectResponse("/cadastro", 303)
+   #    else:
+   #       return RedirectResponse("/cadastro", 303)
+   # else:
+   #    return RedirectResponse("/cadastro", 303)
    
 @app.get("/interesses")
 def get_interesses(request: Request):
    return template.TemplateResponse("form_interesse.html", {"request": request})
 
-# @app.post("/post_intesses")
-# def post_interesses(request: Request, interesses: str = Form(...)):
+@app.post("/post_interesses")
+def post_interesses(
+   request: Request,
+   interesses: tuple = Form(...),
+   usuario: int = Form(...)):
+   for i in range (len(interesses)):
+      print(f"{interesses[i]}")
+      interesse = Interesses(None, usuario, interesses[i])
+      usuario_repo.insere_interesse_usuario(interesse)
 
 @app.get("/login")
 def get_login(request: Request):

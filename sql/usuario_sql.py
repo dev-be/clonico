@@ -39,10 +39,16 @@ SQL_INSERIR_INTERESSE = """
     SELECT ? WHERE NOT EXISTS (SELECT 1 FROM interesse_jogos WHERE interesse = ?);
 """
 
-SQL_INSERIR = """
+SQL_INSERIR_USUARIO = """
     INSERT INTO usuario(nome, email, telefone, data_nascimento, senha)
 	VALUES (?, ?, ?, ?, ?)
 """
+
+SQL_SALVAR_INTERESSE =  """
+    INSERT INTO inte_por_usuario(usuario, interesse)
+    VALUES (?, ?)
+"""
+
 
 SQL_CONSULTA_INTERESSE_USUARIO = """
     SELECT u.nome, ij.interesse

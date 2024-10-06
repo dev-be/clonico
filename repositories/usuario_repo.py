@@ -1,5 +1,5 @@
 from typing import Optional
-from models.usuario_model import *
+from models.usuario_model import Usuario, Interesses
 from sql.usuario_sql import *
 from util import obter_conexao
 
@@ -28,7 +28,7 @@ def insere_dados_interesse():
 def inserir(usuario: Usuario) -> Optional[Usuario]:
     with obter_conexao() as conexao:
         db = conexao.cursor()
-        db.execute(SQL_INSERIR, (
+        db.execute(SQL_INSERIR_USUARIO, (
             usuario.nome, 
             usuario.email,
             usuario.telefone, 
@@ -38,14 +38,19 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
 
         if db.rowcount > 0:
             usuario.id_usuario = db.lastrowid
-            return print(f"{usuario}")
+            print(f"{usuario}")
+            return usuario.id_usuario
         else:
             return None
 
 def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
     with obter_conexao() as conexao:
         db = conexao.cursor()
-        db.execute(SQL_INSERIR_INTERESSE_USUARIO, (interesse.id_usuario, interesse.)
+        db.execute(SQL_SALVAR_INTERESSE, (
+             interesse.usuario, 
+             interesse.interesse
+             ))
+        conexao.commit()
 
 
 # def get_user(db: Session, username: str):
