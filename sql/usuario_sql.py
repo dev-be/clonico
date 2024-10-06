@@ -48,7 +48,9 @@ SQL_SALVAR_INTERESSE =  """
     INSERT INTO inte_por_usuario(usuario, interesse)
     VALUES (?, ?)
 """
-
+SQL_EMAIL_EXISTE = """
+SELECT id_usuario FROM usuario WHERE email = ?
+"""
 
 SQL_CONSULTA_INTERESSE_USUARIO = """
     SELECT u.nome, ij.interesse

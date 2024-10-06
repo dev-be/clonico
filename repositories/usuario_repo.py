@@ -43,8 +43,11 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
         else:
             return None
         
-# def email_existe(self, email):
-#     return any(user.email == email for user in self.usuarios)
+def email_existe(email: str) -> bool:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_EMAIL_EXISTE, (email,))
+        return db.fetchone() is not None
 
 def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
     with obter_conexao() as conexao:

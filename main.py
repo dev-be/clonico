@@ -40,8 +40,8 @@ def post_cadastro(
    if senha != confirmar_senha:
         return RedirectResponse("/cadastro?error=senhas_diferentes", status_code=303)
 
-#    if usuario_repo.email_existe(email):
-#         return RedirectResponse("/cadastro?error=email_ja_cadastrado", status_code=303)
+   if usuario_repo.email_existe(email):
+        return RedirectResponse("/login?error=email_ja_cadastrado", status_code=303)
 
    usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
 
