@@ -95,17 +95,10 @@
                     <label class="btn btn-outline-light w-100" for="btn-check-outlined-musica">Música</label>
                 </div>
             </div>
-            <input type="hidden" id="usuario" name="usuario">
             <button onclick.href="/post_interesses" class="btn-continue">Continuar</button>
             <p class="mt-3">Você pode selecionar quantos interesses quiser. Escolha pelo menos um para continuar.</p>
         </form>
     </div>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search)
-        const userId = urlParams.get('user_id')
-        const el = document.getElementById("usuario");
-        el.setAttribute('value', userId)
-    </script>
 </body>
 
 {% endblock %}
