@@ -42,6 +42,9 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
             return usuario.id_usuario
         else:
             return None
+        
+# def email_existe(self, email):
+#     return any(user.email == email for user in self.usuarios)
 
 def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
     with obter_conexao() as conexao:

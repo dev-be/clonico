@@ -1,13 +1,15 @@
-from fastapi import Depends, FastAPI, Form, HTTPException, Request
+from typing import Optional
+from fastapi import FastAPI, Form, HTTPException, Request
 from fastapi.responses import RedirectResponse
-from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 # from sqlalchemy import Session
 import uvicorn
 
+from auth.cookies import create_token, decode_token
 from models.usuario_model import Usuario, Interesses
 from repositories import usuario_repo
+
 
 usuario_repo.criar_tabela()
 usuario_repo.insere_dados_interesse()
@@ -38,43 +40,46 @@ def post_cadastro(
    if senha != confirmar_senha:
         return RedirectResponse("/cadastro?error=senhas_diferentes", status_code=303)
 
-   # if usuario_repo.email_existe(email):
-   #      return RedirectResponse("/cadastro?error=email_ja_cadastrado", status_code=303)
+#    if usuario_repo.email_existe(email):
+#         return RedirectResponse("/cadastro?error=email_ja_cadastrado", status_code=303)
 
    usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
 
    try:
       usuario_id = usuario_repo.inserir(usuario)
-      return RedirectResponse(f"/interesses?user_id={usuario_id}", status_code=303)
+      session_token = create_token(str(usuario_id))
+      response = RedirectResponse("/interesses",  status_code=303)
+      response.set_cookie(key="session_token", value=session_token, httponly=True)
+      return response
 
    except Exception as e:
       return RedirectResponse("/cadastro?error=erro_inesperado", status_code=303)
    
-   # if senha == confirmar_senha:
-   #    #cadastrar_contato(nome, data_nasc, telefone, email, senha)
-   #    usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
-   #    usuario_repo.inserir(usuario)
-   #    if usuario:
-   #       return RedirectResponse(f"/interesses", 303)
-      
-   #    else:
-   #       return RedirectResponse("/cadastro", 303)
-   # else:
-   #    return RedirectResponse("/cadastro", 303)
-   
 @app.get("/interesses")
 def get_interesses(request: Request):
+   session_token: Optional[str] = request.cookies.get("session_token")
+   if session_token is None:
+      return RedirectResponse("/cadastro", status_code=303)
    return template.TemplateResponse("form_interesse.html", {"request": request})
 
 @app.post("/post_interesses")
 def post_interesses(
-   request: Request,
-   interesses: tuple = Form(...),
-   usuario: int = Form(...)):
-   for i in range (len(interesses)):
-      print(f"{interesses[i]}")
-      interesse = Interesses(None, usuario, interesses[i])
-      usuario_repo.insere_interesse_usuario(interesse)
+    request: Request,
+    interesses: tuple = Form(...)):
+    session_token: Optional[str] = request.cookies.get("session_token")
+
+    if session_token is None:
+        raise HTTPException(status_code=401, detail="Usuário não autenticado")
+
+    usuario_id = decode_token(session_token)
+
+    if usuario_id is None:
+        raise HTTPException(status_code=401, detail="Token de sessão inválido ou expirado")
+
+    for interesse in interesses:
+        usuario_repo.insere_interesse_usuario(Interesses(None, usuario_id, interesse))
+
+    return RedirectResponse("/login", status_code=303)
 
 @app.get("/login")
 def get_login(request: Request):
