@@ -1,6 +1,5 @@
 from itsdangerous import URLSafeTimedSerializer
 
-
 SECRET_KEY = "testandocookies"
 serializer = URLSafeTimedSerializer(SECRET_KEY)
 

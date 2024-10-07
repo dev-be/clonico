@@ -85,17 +85,21 @@ def post_interesses(
 def get_login(request: Request):
    return template.TemplateResponse("login.html", {"request": request})
 
-# @app.post("/login")
-# async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-#     user = usuario_repo.get_user(form_data.username)
-#     if not user or not usuario_repo.verify_password(form_data.password, user.hashed_password):
-#         raise HTTPException(
-#             status_code=status.HTTP_401_UNAUTHORIZED,
-#             detail="Invalid credentials",
-#             headers={"WWW-Authenticate": "Basic"},
-#         )
-    
-#     return {"message": "Login bem-sucedido!"}
+@app.post("/login")
+def login(
+   request: Request,
+   email: str = Form(...),
+   senha: str = Form(...)):
+
+   usuario = usuario_repo.obter_usuario_por_email(email)
+
+   if not usuario or not usuario_repo.verificar_senha(senha,  usuario.senha):
+      return RedirectResponse("/login?error=credenciais_invalidas", status_code=303)
+   
+   session_token  = create_token(str(usuario.id_usuario))
+   response  = RedirectResponse("/login?message=login_efetuado_com_sucesso",  status_code=303)
+   response.set_cookie(key="session_token", value=session_token, httponly=True)
+   return response
 
 if __name__ == "__main__":
  uvicorn.run("main:app", port=8000, reload=True)

@@ -17,3 +17,8 @@ class Interesses:
     id: Optional[int] = None
     usuario:  Optional[str] = None
     interesse:  Optional[str] = None
+
+@dataclass
+class Login:
+    usuario: Optional[str] =  None
+    senha: Optional[str] = None

@@ -58,9 +58,15 @@ def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
              ))
         conexao.commit()
 
-
-# def get_user(db: Session, username: str):
-#     return db.query(Usuario).filter(Usuario.nome == username).first()
-
-# def verify_password(plain_password, hashed_password):
-#     return pwd_context.verify(plain_password, hashed_password)
+def obter_usuario_por_email(email: str) -> Optional[Usuario]:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_OBTER_USUARIO_POR_EMAIL, (email,))
+        resultado = db.fetchone()
+        if resultado:
+            return Usuario(*resultado)
+        else:
+            return None
+        
+def verificar_senha(senha_fornecida: str, senha_armazenada: str) -> bool:
+    return senha_fornecida == senha_armazenada
