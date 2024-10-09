@@ -101,5 +101,9 @@ def login(
    response.set_cookie(key="session_token", value=session_token, httponly=True)
    return response
 
+@app.get("/profile")
+def get_root(request: Request):
+    return template.TemplateResponse("perfil.html", {"request": request})
+
 if __name__ == "__main__":
  uvicorn.run("main:app", port=8000, reload=True)
