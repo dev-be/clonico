@@ -1,0 +1,80 @@
+
+body {
+    background: linear-gradient(135deg, #6e00ff, #9b00ff);
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+.profile-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 50px auto;
+}
+.profile-header {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profile-header h2 {
+    margin: 0;
+}
+.profile-header .btn {
+    background: #ffc107;
+    color: #333;
+}
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    display: block;
+    margin: 0 auto 10px;
+}
+.profile-info {
+    text-align: center;
+}
+.profile-info h3 {
+    margin: 10px 0 5px;
+}
+.profile-info p {
+    margin: 0;
+    color: #666;
+}
+.progress {
+    height: 10px;
+    margin: 10px 0;
+}
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+.stats .stat {
+    text-align: center;
+}
+.stats .stat h4 {
+    margin: 5px 0;
+}
+.stats .stat p {
+    margin: 0;
+    color: #666;
+}
+.favorites, .achievements {
+    margin: 20px 0;
+}
+.achievements .achievement {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.achievements .achievement i {
+    margin-right: 10px;
+}

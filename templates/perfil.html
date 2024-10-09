@@ -1,0 +1,66 @@
+{% block conteudo %}
+
+<head>
+    <title>Perfil do Jogador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/perfil.css">
+</head>
+
+<body>
+    <div class="profile-card">
+        <div class="profile-header">
+            <h2>Perfil do Jogador</h2>
+            <button class="btn btn-warning">Editar</button>
+        </div>
+        <div class="profile-info">
+            <div class="profile-picture"></div>
+            <h3>Alex Gamer</h3>
+            <p>@alexgamer</p>
+            <div class="progress">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 78%;" aria-valuenow="78"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p>Level 42</p>
+            <p>7800 / 10000 XP</p>
+            <p>Gamer apaixonado por RPGs e FPS. Sempre em busca do próximo desafio!</p>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <h4>1337</h4>
+                <p>Jogos</p>
+            </div>
+            <div class="stat">
+                <h4>89</h4>
+                <p>Conquistas</p>
+            </div>
+            <div class="stat">
+                <h4>215</h4>
+                <p>Amigos</p>
+            </div>
+        </div>
+        <div class="favorites">
+            <h5>Jogos Favoritos</h5>
+            <ul>
+                <li>The Witcher 3</li>
+                <li>Overwatch</li>
+                <li>Final Fantasy XIV</li>
+            </ul>
+        </div>
+        <div class="achievements">
+            <h5>Conquistas Recentes</h5>
+            <div class="achievement">
+                <i class="fas fa-trophy text-warning"></i> Mestre das Sombras - Completou todas as missões stealth
+            </div>
+            <div class="achievement">
+                <i class="fas fa-trophy text-warning"></i> Lendário - Atingiu o rank mais alto em partidas competitivas
+            </div>
+            <div class="achievement">
+                <i class="fas fa-trophy text-warning"></i> Colecionador - Coletou 1000 itens únicos
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
