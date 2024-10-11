@@ -22,3 +22,12 @@ class Interesses:
 class Login:
     usuario: Optional[str] =  None
     senha: Optional[str] = None
+
+@dataclass
+class Profile:
+    id_usuario: Optional[int] = None
+    nome: Optional[str] = None
+
+class Interesses:
+        usuario = Optional[int] =  None
+        interesse = Optional[int] =  None
