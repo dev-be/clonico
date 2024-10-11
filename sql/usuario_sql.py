@@ -58,10 +58,10 @@ FROM usuario
 WHERE email = ?
 """
 
-SQL_CONSULTA_INTERESSE_USUARIO = """
+SQL_EXIBIR_USER_PROFILE = """
     SELECT u.nome, ij.interesse
 	FROM usuario u
 JOIN inte_por_usuario ipu ON u.id_usuario = ipu.usuario
 JOIN interesse_jogos ij ON ipu.interesse = ij.id_interesse
-	WHERE u.nome = ?;
+	WHERE u.id_usuario = ?
 """
