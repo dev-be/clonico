@@ -48,6 +48,7 @@ SQL_SALVAR_INTERESSE =  """
     INSERT INTO inte_por_usuario(usuario, interesse)
     VALUES (?, ?)
 """
+
 SQL_EMAIL_EXISTE = """
 SELECT id_usuario FROM usuario WHERE email = ?
 """
@@ -61,7 +62,18 @@ WHERE email = ?
 SQL_EXIBIR_USER_PROFILE = """
     SELECT u.nome, ij.interesse
 	FROM usuario u
-JOIN inte_por_usuario ipu ON u.id_usuario = ipu.usuario
-JOIN interesse_jogos ij ON ipu.interesse = ij.id_interesse
+    JOIN inte_por_usuario ipu ON u.id_usuario = ipu.usuario
+    JOIN interesse_jogos ij ON ipu.interesse = ij.id_interesse
 	WHERE u.id_usuario = ?
+"""
+
+SQL_OBTER_DADOS_USUARIO = """
+    SELECT 
+    u.id_usuario,
+    u.nome,
+    i_j.interesse
+    FROM usuario u
+    JOIN inte_por_usuario i_u ON u.id_usuario = i_u.usuario
+    JOIN interesse_jogos i_j ON i_u.interesse = i_j.id_interesse
+    WHERE u.id_usuario = :user_id;
 """
