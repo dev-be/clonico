@@ -9,23 +9,28 @@
 </head>
 
 <body>
-    <div class="profile-card">
+    <div class="profile-card ">
         <div class="profile-header">
             <h2>Perfil do Jogador</h2>
-            <button class="btn btn-warning">Editar</button>
+            <button class="btn btn-warning disabled">Editar</button>
         </div>
+        
         <div class="profile-info">
-            <div class="profile-picture"></div>
-            <h3>Alex Gamer</h3>
-            <p>@alexgamer</p>
+            <div class="profile-picture">
+                <img src="/static/images/default_profile.svg" alt="Foto de Perfil" width="90%;" />
+            </div>
+            <h3>{{ usuario.nome }}</h3>
+            <p>@{{ usuario.nome|lower }}</p>
+            
             <div class="progress">
                 <div class="progress-bar bg-primary" role="progressbar" style="width: 78%;" aria-valuenow="78"
                     aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <p>Level 42</p>
+            <p>Nível 42</p>
             <p>7800 / 10000 XP</p>
             <p>Gamer apaixonado por RPGs e FPS. Sempre em busca do próximo desafio!</p>
         </div>
+        
         <div class="stats">
             <div class="stat">
                 <h4>1337</h4>
@@ -40,14 +45,16 @@
                 <p>Amigos</p>
             </div>
         </div>
+
         <div class="favorites">
             <h5>Jogos Favoritos</h5>
             <ul>
-                <li>The Witcher 3</li>
-                <li>Overwatch</li>
-                <li>Final Fantasy XIV</li>
+                {% for interesse in interesses %}
+                    <li>{{ interesse.interesse }}</li>
+                {% endfor %}
             </ul>
         </div>
+
         <div class="achievements">
             <h5>Conquistas Recentes</h5>
             <div class="achievement">
