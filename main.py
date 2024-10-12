@@ -109,6 +109,12 @@ def login(
    response.set_cookie(key="session_token", value=session_token, httponly=True)
    return response
 
+@app.post("/logout")
+def logout(request: Request):
+    response = RedirectResponse("/login", status_code=303)
+    response.delete_cookie(key="session_token")
+    return response
+
 @app.get("/feed")
 def get_root(request: Request):
     return template.TemplateResponse("feed.html", {"request": request})
