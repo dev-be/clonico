@@ -32,6 +32,7 @@ def  get_cadastro(request: Request):
 def post_cadastro(
    request: Request,
    nome: str = Form(...),
+   username: str = Form(...),
    email: str = Form(...),
    telefone: str = Form(...),
    data_nascimento: str = Form(...),
@@ -43,7 +44,7 @@ def post_cadastro(
    if usuario_repo.email_existe(email):
         return RedirectResponse("/login?error=email_ja_cadastrado", status_code=303)
 
-   usuario = Usuario(None, nome, email, telefone, data_nascimento, senha)
+   usuario = Usuario(None, nome, username, email, telefone, data_nascimento, senha)
 
    try:
       usuario_id = usuario_repo.inserir(usuario)
