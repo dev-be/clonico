@@ -28,6 +28,7 @@ class Login:
 class Profile:
     id_usuario: Optional[int] = None
     nome: Optional[str] = None
+    username: Optional[str] = None
 
 @dataclass
 class InteressesProfile:
