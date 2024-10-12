@@ -40,3 +40,18 @@ body {
 .login-container a:hover {
     text-decoration: underline;
 }
+.btn-voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+}
+.btn-voltar:hover {
+    background-color: #fff;
+    color: #4B0082;
+}
