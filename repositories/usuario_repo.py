@@ -85,7 +85,7 @@ def obter_dados_usuario(usuario_id: int) -> Profile:
         db.execute(SQL_OBTER_DADOS_USUARIO, (usuario_id,))
         resultado = db.fetchone()
         if resultado:
-            return Profile(id_usuario=resultado[0], nome=resultado[1])
+            return Profile(id_usuario=resultado[0], nome=resultado[1], username=resultado[2])
         return None
 
 def obter_interesses_usuario(usuario: int) -> List[InteressesProfile]:
