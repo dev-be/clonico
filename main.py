@@ -1,6 +1,6 @@
 from typing import Optional
 from fastapi import FastAPI, Form, HTTPException, Request
-from fastapi.responses import RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 # from sqlalchemy import Session
@@ -101,9 +101,30 @@ def login(
    response.set_cookie(key="session_token", value=session_token, httponly=True)
    return response
 
-@app.get("/profile")
-def get_root(request: Request):
-    return template.TemplateResponse("perfil.html", {"request": request})
+@app.get("/profile", response_class=HTMLResponse)
+def get_profile(request: Request):
+    session_token = request.cookies.get("session_token")
+
+    if not session_token:
+        raise HTTPException(status_code=401, detail="Usuário não autenticado")
+
+    usuario_id = decode_token(session_token)
+
+    if usuario_id is None:
+        raise HTTPException(status_code=401, detail="Token de sessão inválido ou expirado")
+
+    usuario = usuario_repo.obter_dados_usuario(usuario_id)
+    if not usuario:
+        raise HTTPException(status_code=404, detail="Usuário não encontrado")
+
+    interesses = usuario_repo.obter_interesses_usuario(usuario_id)
+
+
+    return  template.TemplateResponse("perfil.html", {
+        "request": request,
+        "usuario": usuario,
+        "interesses": interesses
+    })
 
 if __name__ == "__main__":
  uvicorn.run("main:app", port=8000, reload=True)
