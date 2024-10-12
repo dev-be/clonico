@@ -49,6 +49,13 @@ def email_existe(email: str) -> bool:
         db = conexao.cursor()
         db.execute(SQL_EMAIL_EXISTE, (email,))
         return db.fetchone() is not None
+    
+def username_existe(username:  str) -> bool:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_USERNAME_EXISTE, (username,))
+        return db.fetchone() is not None
+
 
 def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
     with obter_conexao() as conexao:

@@ -1,3 +1,4 @@
+import re
 from typing import Optional
 from fastapi import FastAPI, Form, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -43,6 +44,12 @@ def post_cadastro(
 
    if usuario_repo.email_existe(email):
         return RedirectResponse("/login?error=email_ja_cadastrado", status_code=303)
+   
+   if usuario_repo.username_existe(username):
+       return RedirectResponse("/cadastro?error=username_ja_cadastrado", status_code=303)
+   
+   if not re.match(r'^[a-z0-9_]+$', username):
+       return RedirectResponse("/cadastro?error=nome_usuario_invalido", status_code=303)
 
    usuario = Usuario(None, nome, username, email, telefone, data_nascimento, senha)
 

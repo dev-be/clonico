@@ -54,6 +54,10 @@ SQL_EMAIL_EXISTE = """
 SELECT id_usuario FROM usuario WHERE email = ?
 """
 
+SQL_USERNAME_EXISTE = """
+SELECT id_usuario FROM usuario WHERE username = ?
+"""
+
 SQL_OBTER_USUARIO_POR_EMAIL = """
 SELECT id_usuario, nome, username, email, telefone, data_nascimento, senha
 FROM usuario
