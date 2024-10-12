@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerMatch Feed</title>
+  <link rel="stylesheet" href="/static/css/feed.css">
+  <!-- Ícones FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar esquerda -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-gamepad logo-icon"></i>
+        <h1 class="logo-text">GamerMatch</h1>
+      </div>
+      <nav class="nav-menu">
+        <button class="nav-button active">
+          <i class="fas fa-comment"></i> Feed
+        </button>
+        <button class="nav-button">
+          <i class="fas fa-user"></i> Perfil
+        </button>
+        <button class="nav-button">
+          <i class="fas fa-bell"></i> Notificações
+        </button>
+      </nav>
+      <button class="logout-button">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    </aside>
+
+    <!-- Feed Principal -->
+    <main class="feed">
+      <form class="new-post">
+        <div class="post-input">
+          <i class="fas fa-user-circle avatar-icon"></i>
+          <input type="text" placeholder="O que está jogando?" class="post-text-input">
+        </div>
+        <div class="post-actions">
+          <label for="image-upload" class="image-upload-label">
+            <i class="fas fa-image"></i>
+            <input type="file" id="image-upload" class="image-upload-input">
+          </label>
+          <button class="post-button">Postar</button>
+        </div>
+      </form>
+
+      <div class="post-container">
+        <!-- Posts -->
+        <div class="post-card">
+          <div class="post-header">
+            <i class="fas fa-user-circle post-avatar"></i>
+            <div class="post-info">
+              <p class="post-user">Bernardo <span>@bernardo_gamer</span></p>
+              <p class="post-time">2h</p>
+            </div>
+          </div>
+          <p class="post-content">Acabei de conseguir o achievement mais difícil em Elden Ring! 🎮🏆</p>
+          <div class="post-image-placeholder"></div>
+          <div class="post-footer">
+            <button class="like-button"><i class="fas fa-heart"></i> 42</button>
+            <button class="repost-button"><i class="fas fa-retweet"></i> 12</button>
+            <button class="comment-button"><i class="fas fa-comment"></i> 8</button>
+          </div>
+        </div>
+        <div class="post-card">
+          <div class="post-header">
+            <i class="fas fa-user-circle post-avatar"></i>
+            <div class="post-info">
+              <p class="post-user">Miguel <span>@miguelzinhoheadshot</span></p>
+              <p class="post-time">4h</p>
+            </div>
+          </div>
+          <p class="post-content">Novo setup para streaming! O que acham?</p>
+          <div class="post-image-placeholder"></div>
+          <div class="post-footer">
+            <button class="like-button"><i class="fas fa-heart"></i> 87</button>
+            <button class="repost-button"><i class="fas fa-retweet"></i> 23</button>
+            <button class="comment-button"><i class="fas fa-comment"></i> 31</button>
+          </div>
+        </div>
+        <div class="post-card">
+          <div class="post-header">
+            <i class="fas fa-user-circle post-avatar"></i>
+            <div class="post-info">
+              <p class="post-user">Loriel <span>@lorielproplayer</span></p>
+              <p class="post-time">7h</p>
+            </div>
+          </div>
+          <p class="post-content">Consegui uma skin lendária no Warzone!</p>
+          <div class="post-image-placeholder"></div>
+          <div class="post-footer">
+            <button class="like-button"><i class="fas fa-heart"></i> 12</button>
+            <button class="repost-button"><i class="fas fa-retweet"></i> 2</button>
+            <button class="comment-button"><i class="fas fa-comment"></i> 5</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Barra lateral direita -->
+    <aside class="right-sidebar">
+      <div class="search-section">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Buscar no GamerMatch">
+        </div>
+      </div>
+      <div class="trending-section">
+        <h2>Tópicos em Alta</h2>
+        <ul>
+          <li>#E3Announcements</li>
+          <li>#NewGameRelease</li>
+          <li>#GamingSetup</li>
+          <li>#StreamerShowcase</li>
+          <li>#EsportsTournament</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>
