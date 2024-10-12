@@ -66,10 +66,10 @@ def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
              ))
         conexao.commit()
 
-def obter_usuario_por_email(email: str) -> Optional[Usuario]:
+def obter_usuario_por_email_username(identifier: str) -> Optional[Usuario]:
     with obter_conexao() as conexao:
         db = conexao.cursor()
-        db.execute(SQL_OBTER_USUARIO_POR_EMAIL, (email,))
+        db.execute(SQL_OBTER_USUARIO_POR_EMAIL_USERNAME, (identifier, identifier))
         resultado = db.fetchone()
         if resultado:
             return Usuario(*resultado)

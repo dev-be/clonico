@@ -96,10 +96,10 @@ def get_login(request: Request):
 @app.post("/login")
 def login(
    request: Request,
-   email: str = Form(...),
+   identifier: str = Form(...),
    senha: str = Form(...)):
 
-   usuario = usuario_repo.obter_usuario_por_email(email)
+   usuario = usuario_repo.obter_usuario_por_email_username(identifier)
 
    if not usuario or not usuario_repo.verificar_senha(senha,  usuario.senha):
       return RedirectResponse("/login?error=credenciais_invalidas", status_code=303)
