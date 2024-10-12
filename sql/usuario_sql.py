@@ -2,6 +2,7 @@ SQL_CRIAR_TABELA = ["""
     CREATE TABLE IF NOT EXISTS usuario (
     id_usuario INTEGER,
     nome VARCHAR(70) NOT NULL,
+    username  VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     telefone VARCHAR(20) NOT NULL,
     data_nascimento DATE NOT NULL,
@@ -40,8 +41,8 @@ SQL_INSERIR_INTERESSE = """
 """
 
 SQL_INSERIR_USUARIO = """
-    INSERT INTO usuario(nome, email, telefone, data_nascimento, senha)
-	VALUES (?, ?, ?, ?, ?)
+    INSERT INTO usuario(nome, username, email, telefone, data_nascimento, senha)
+	VALUES (?, ?, ?, ?, ?, ?)
 """
 
 SQL_SALVAR_INTERESSE =  """
@@ -54,13 +55,13 @@ SELECT id_usuario FROM usuario WHERE email = ?
 """
 
 SQL_OBTER_USUARIO_POR_EMAIL = """
-SELECT id_usuario, nome, email, telefone, data_nascimento, senha
+SELECT id_usuario, nome, username, email, telefone, data_nascimento, senha
 FROM usuario
 WHERE email = ?
 """
 
 SQL_EXIBIR_USER_PROFILE = """
-    SELECT u.nome, ij.interesse
+    SELECT u.nome, u.username, ij.interesse
 	FROM usuario u
     JOIN inte_por_usuario ipu ON u.id_usuario = ipu.usuario
     JOIN interesse_jogos ij ON ipu.interesse = ij.id_interesse
@@ -68,10 +69,7 @@ SQL_EXIBIR_USER_PROFILE = """
 """
 
 SQL_OBTER_DADOS_USUARIO = """
-    SELECT 
-    u.id_usuario,
-    u.nome,
-    i_j.interesse
+    SELECT u.id_usuario, u.nome, u.username, i_j.interesse
     FROM usuario u
     JOIN inte_por_usuario i_u ON u.id_usuario = i_u.usuario
     JOIN interesse_jogos i_j ON i_u.interesse = i_j.id_interesse
