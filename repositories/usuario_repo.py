@@ -30,6 +30,7 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
         db = conexao.cursor()
         db.execute(SQL_INSERIR_USUARIO, (
             usuario.nome, 
+            usuario.username,
             usuario.email,
             usuario.telefone, 
             usuario.data_nascimento, 
