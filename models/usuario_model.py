@@ -7,6 +7,7 @@ from typing import Optional
 class Usuario:
     id_usuario: Optional[int] = None
     nome: Optional[str]  = None
+    username: Optional[str] = None
     email: Optional[str]  = None
     telefone: Optional[str] = None
     data_nascimento: Optional[date] = None
