@@ -101,6 +101,10 @@ def login(
    response.set_cookie(key="session_token", value=session_token, httponly=True)
    return response
 
+@app.get("/feed")
+def get_root(request: Request):
+    return template.TemplateResponse("feed.html", {"request": request})
+
 @app.get("/profile", response_class=HTMLResponse)
 def get_profile(request: Request):
     session_token = request.cookies.get("session_token")

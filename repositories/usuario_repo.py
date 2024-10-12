@@ -1,5 +1,5 @@
 from typing import List, Optional
-from models.usuario_model import Usuario, Interesses, Profile
+from models.usuario_model import Usuario, Interesses, Profile, InteressesProfile
 from sql.usuario_sql import *
 from util import obter_conexao
 
@@ -80,9 +80,9 @@ def obter_dados_usuario(usuario_id: int) -> Profile:
             return Profile(id_usuario=resultado[0], nome=resultado[1])
         return None
 
-def obter_interesses_usuario(usuario: int) -> List[Interesses]:
+def obter_interesses_usuario(usuario: int) -> List[InteressesProfile]:
     with obter_conexao() as conexao:
         db = conexao.cursor()
         db.execute(SQL_EXIBIR_USER_PROFILE, (usuario,))
         resultado = db.fetchall()
-        return [Interesses(usuario=usuario, interesse=row[1]) for row in resultado]
+        return [InteressesProfile(usuario=usuario, interesse=row[1]) for row in resultado]

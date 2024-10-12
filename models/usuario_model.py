@@ -29,6 +29,6 @@ class Profile:
     nome: Optional[str] = None
 
 @dataclass
-class Interesses:
+class InteressesProfile:
         usuario: Optional[int] =  None
         interesse: Optional[int] =  None
