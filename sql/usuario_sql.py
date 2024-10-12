@@ -59,7 +59,7 @@ SELECT id_usuario FROM usuario WHERE username = ?
 """
 
 SQL_OBTER_USUARIO_POR_EMAIL_USERNAME = """
-SELECT id_usuario, nome, email, telefone, data_nascimento, senha
+SELECT id_usuario, nome, username, email, telefone, data_nascimento, senha
 FROM usuario
 WHERE email = ? OR username = ?
 """
