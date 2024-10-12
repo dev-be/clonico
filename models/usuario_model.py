@@ -28,6 +28,7 @@ class Profile:
     id_usuario: Optional[int] = None
     nome: Optional[str] = None
 
+@dataclass
 class Interesses:
-        usuario = Optional[int] =  None
-        interesse = Optional[int] =  None
+        usuario: Optional[int] =  None
+        interesse: Optional[int] =  None
