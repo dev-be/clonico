@@ -77,5 +77,5 @@ SQL_OBTER_DADOS_USUARIO = """
     FROM usuario u
     JOIN inte_por_usuario i_u ON u.id_usuario = i_u.usuario
     JOIN interesse_jogos i_j ON i_u.interesse = i_j.id_interesse
-    WHERE u.id_usuario = :user_id;
+    WHERE u.id_usuario = :user_id; 
 """
