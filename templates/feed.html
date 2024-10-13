@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/static/images/clonico_icon.svg">
   <title>Clonico Feed</title>
   <link rel="stylesheet" href="/static/css/feed.css">
   <!-- Ícones FontAwesome -->
@@ -16,11 +17,12 @@
             <div class="logo-text">Meu Jogo</div>
         </div>
         <div class="nav-menu">
-            <button class="nav-button active"><i class="fas fa-home"></i> Início</button>
+            <button class="nav-button" onclick="window.location.href='/feed'"><i class="fas fa-home"></i> Início</button>
+            <button class="nav-button" onclick="window.location.href='/profile'"><i class="fas fa-user"></i> Perfil</button>
             <button class="nav-button"><i class="fas fa-gamepad"></i> Jogos</button>
             <button class="nav-button"><i class="fas fa-user-friends"></i> Amigos</button>
             <button class="nav-button"><i class="fas fa-trophy"></i> Conquistas</button>
-            <button class="nav-button"><i class="fas fa-cog"></i> Configurações</button>
+            <button class="nav-button" onclick="window.location.href='/logout'"><i class="fas fa-cog"></i> Configurações</button>
         </div>
         <button class="logout-button"><i class="fas fa-sign-out-alt"></i> Sair</button>
     </div>
