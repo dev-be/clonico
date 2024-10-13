@@ -48,6 +48,16 @@
         </div>
         <p>Não tem uma conta? <a href="/cadastro">Registre-se</a></p>
     </div>
-</body>
 
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        const username =  getQueryParam('username');
+        if (username) {
+            document.getElementById('identifier').value = username;
+        }
+    </script>
+</body>
 </html>
