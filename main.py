@@ -105,7 +105,7 @@ def login(
       return RedirectResponse("/login?error=credenciais_invalidas", status_code=303)
    
    session_token  = create_token(str(usuario.id_usuario))
-   response  = RedirectResponse("/login?message=login_efetuado_com_sucesso",  status_code=303)
+   response  = RedirectResponse("/feed?message=login_efetuado_com_sucesso",  status_code=303)
    response.set_cookie(key="session_token", value=session_token, httponly=True)
    return response
 
