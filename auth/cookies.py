@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta, timezone
+from fastapi import Response
 from itsdangerous import URLSafeTimedSerializer
 
 SECRET_KEY = "testandocookies"
@@ -13,3 +15,7 @@ def decode_token(token: str) -> str:
     
     except Exception:
         return  None
+
+def remover_cookies(response: Response):
+    response.delete_cookie(key="session_token")
+    
