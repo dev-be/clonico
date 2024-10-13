@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 # from sqlalchemy import Session
 import uvicorn
 
-from auth.cookies import create_token, decode_token
+from auth.cookies import create_token, decode_token, remover_cookies
 from models.usuario_model import Usuario, Interesses
 from repositories import usuario_repo
 
@@ -109,10 +109,10 @@ def login(
    response.set_cookie(key="session_token", value=session_token, httponly=True)
    return response
 
-@app.post("/logout")
+@app.get("/logout")
 def logout(request: Request):
     response = RedirectResponse("/login", status_code=303)
-    response.delete_cookie(key="session_token")
+    remover_cookies(response)
     return response
 
 @app.get("/feed")
