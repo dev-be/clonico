@@ -31,7 +31,14 @@ body {
     align-items: center;
     margin-bottom: 40px;
 }
-
+.icon-clonico {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(/static/images/clonico_icon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 .logo-icon {
     font-size: 24px;
     color: #3b82f6;
