@@ -101,8 +101,12 @@ def login(
 
    usuario = usuario_repo.obter_usuario_por_email_username(identifier)
 
-   if not usuario or not usuario_repo.verificar_senha(senha,  usuario.senha):
+   if usuario is None:
+       return  RedirectResponse("/cadastro?error=usuario_nao_cadastrado", status_code=303)
+
+   if not usuario_repo.verificar_senha(senha,  usuario.senha):
       return RedirectResponse("/login?error=credenciais_invalidas", status_code=303)
+   
    
    session_token  = create_token(str(usuario.id_usuario))
    response  = RedirectResponse("/feed?message=login_efetuado_com_sucesso",  status_code=303)
