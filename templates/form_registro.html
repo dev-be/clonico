@@ -1,13 +1,18 @@
-{% block conteudo %}
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/static/images/clonico_icon.svg">
     <title>Clonico Signup</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/static/css/form_registro.css">
-    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/form_registro.css?v=1.0">
+    <link rel="stylesheet" href="/static/css/global.css?v=1.0">
 </head>
 <body>
+    <a href="/" class="btn btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
     <div class="card">
         <h2 class="text-center">Junte-se ao Clonico</h2>
         <p class="text-center">Crie sua conta e encontre seu Player</p>
@@ -26,7 +31,15 @@
                 class="form-control" 
                 id="email"
                 name="email"
-                placeholder="seu-email@exemplo.com" required>
+                placeholder="seuemail@exemplo.com" required>
+            </div>
+            <div class="mb-3">
+                <input 
+                type="text" 
+                class="form-control" 
+                id="username"
+                name="username"
+                placeholder="user_ex1" required>
             </div>
             <div class="mb-3">
                 <input 
@@ -81,4 +94,4 @@
     </div>
 </body>
 
-{% endblock %}
+</html>

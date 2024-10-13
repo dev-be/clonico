@@ -1,5 +1,5 @@
-from typing import Optional
-from models.usuario_model import Usuario, Interesses
+from typing import List, Optional
+from models.usuario_model import Usuario, Interesses, Profile, InteressesProfile
 from sql.usuario_sql import *
 from util import obter_conexao
 
@@ -30,6 +30,7 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
         db = conexao.cursor()
         db.execute(SQL_INSERIR_USUARIO, (
             usuario.nome, 
+            usuario.username,
             usuario.email,
             usuario.telefone, 
             usuario.data_nascimento, 
@@ -42,6 +43,19 @@ def inserir(usuario: Usuario) -> Optional[Usuario]:
             return usuario.id_usuario
         else:
             return None
+        
+def email_existe(email: str) -> bool:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_EMAIL_EXISTE, (email,))
+        return db.fetchone() is not None
+    
+def username_existe(username:  str) -> bool:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_USERNAME_EXISTE, (username,))
+        return db.fetchone() is not None
+
 
 def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
     with obter_conexao() as conexao:
@@ -52,9 +66,31 @@ def insere_interesse_usuario(interesse: Interesses) -> Optional[Interesses]:
              ))
         conexao.commit()
 
+def obter_usuario_por_email_username(identifier: str) -> Optional[Usuario]:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_OBTER_USUARIO_POR_EMAIL_USERNAME, (identifier, identifier))
+        resultado = db.fetchone()
+        if resultado:
+            return Usuario(*resultado)
+        else:
+            return None
+        
+def verificar_senha(senha_fornecida: str, senha_armazenada: str) -> bool:
+    return senha_fornecida == senha_armazenada
 
-# def get_user(db: Session, username: str):
-#     return db.query(Usuario).filter(Usuario.nome == username).first()
+def obter_dados_usuario(usuario_id: int) -> Profile:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_OBTER_DADOS_USUARIO, (usuario_id,))
+        resultado = db.fetchone()
+        if resultado:
+            return Profile(id_usuario=resultado[0], nome=resultado[1], username=resultado[2])
+        return None
 
-# def verify_password(plain_password, hashed_password):
-#     return pwd_context.verify(plain_password, hashed_password)
+def obter_interesses_usuario(usuario: int) -> List[InteressesProfile]:
+    with obter_conexao() as conexao:
+        db = conexao.cursor()
+        db.execute(SQL_EXIBIR_USER_PROFILE, (usuario,))
+        resultado = db.fetchall()
+        return [InteressesProfile(usuario=usuario, interesse=row[1]) for row in resultado]

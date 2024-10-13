@@ -1,11 +1,14 @@
-{% extends "base.html" %}
-{% block conteudo %}
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/static/images/clonico_icon.svg">
     <title>Clonico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/index.css?v=1.0">
 </head>
 
 <body>
@@ -14,6 +17,7 @@
         <a href="/cadastro">Cadastre-se</a>
     </div>
     <div class="main-content">
+        <img src="/static/images/clonico_icon.svg" width="10%" alt="">
         <h1>Encontre seu Player</h1>
         <p>Conecte-se com gamers que compartilham sua paixão. Faça match, jogue junto e quem sabe encontre o amor nos
             servidores.</p>
@@ -21,8 +25,7 @@
             <input type="text" placeholder="Qual é o seu nick?">
             <button>Começar</button>
         </div>
-        <p>Ao se inscrever, você concorda com nossos <a href="#"
-                style="color: white; text-decoration: underline;">Termos e Condições</a>.</p>
+        <p>Ao se inscrever, você concorda com nossos <a href="#" style="color: white; text-decoration: underline;">Termos e Condições</a>.</p>
     </div>
     <div class="features">
         <div>
@@ -53,4 +56,4 @@
     </div>
 </body>
 
-    {% endblock %}
+</html>

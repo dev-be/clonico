@@ -1,0 +1,175 @@
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #3b82f6, #9333ea);
+    color: #333;
+}
+
+.layout {
+    display: flex;
+    height: 100vh; /* Altura total da janela */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #fff;
+    padding: 20px;
+    width: 250px; /* Largura da barra lateral */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.icon-clonico {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(/static/images/clonico_icon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.logo-icon {
+    font-size: 24px;
+    color: #3b82f6;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+.nav-menu {
+    flex-grow: 1;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: #333;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.nav-button i {
+    margin-right: 10px;
+}
+
+.nav-button.active {
+    background-color: #3b82f6;
+    color: #fff;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: 2px solid #3b82f6;
+    padding: 10px;
+    font-size: 18px;
+    color: #3b82f6;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Feed Principal */
+.feed {
+    flex-grow: 1; /* Permite que o feed ocupe o espaço restante */
+    padding: 20px;
+    overflow-y: auto; /* Rolagem se o conteúdo for muito longo */
+}
+
+/* Profile Card */
+.profile-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    width: 10%;
+}
+
+/* Profile Header */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-header h2 {
+    margin: 0;
+}
+
+/* Profile Info */
+.profile-info {
+    text-align: center;
+}
+
+.profile-info h3 {
+    margin: 10px 0 5px;
+}
+
+.profile-info p {
+    margin: 0;
+    color: #666;
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.stats .stat {
+    text-align: center;
+}
+
+.stats .stat h4 {
+    margin: 5px 0;
+}
+
+.stats .stat p {
+    margin: 0;
+    color: #666;
+}
+
+/* Favorites and Achievements */
+.favorites, .achievements {
+    margin: 20px 0;
+}
+
+.achievements .achievement {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.achievements .achievement i {
+    margin-right: 10px;
+}
+
+.trofeu-amarelo {
+    color: #f7dc6f;
+}

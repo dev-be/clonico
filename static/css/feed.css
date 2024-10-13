@@ -1,0 +1,272 @@
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #3b82f6, #9333ea);
+    color: #333;
+}
+
+.layout {
+    display: flex;
+    height: 100vh; /* Altura total da janela */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #fff;
+    padding: 20px;
+    width: 250px; /* Largura da barra lateral */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.icon-clonico {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(/static/images/clonico_icon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.logo-icon {
+    font-size: 24px;
+    color: #3b82f6;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+.nav-menu {
+    flex-grow: 1;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding: 14px;
+    color: #333;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.nav-button i {
+    margin-right: 10px;
+}
+
+.nav-button.active {
+    background-color: #3b82f6;
+    color: #fff;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: 2px solid #3b82f6;
+    padding: 10px;
+    font-size: 18px;
+    color: #3b82f6;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Feed Principal */
+.feed {
+    flex-grow: 1; /* Permite que o feed ocupe o espaço restante */
+    padding: 20px;
+    overflow-y: auto; /* Rolagem se o conteúdo for muito longo */
+}
+
+/* Novo Post */
+.new-post {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.post-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.avatar-icon {
+    font-size: 30px;
+    color: #3b82f6;
+    margin-right: 10px;
+}
+
+.post-text-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-upload-label {
+    cursor: pointer;
+}
+
+.image-upload-label i {
+    font-size: 24px;
+    color: #3b82f6;
+}
+
+.image-upload-input {
+    display: none;
+}
+
+.post-button {
+    background-color: #3b82f6;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Post Card */
+.post-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-avatar {
+    font-size: 30px;
+    color: #3b82f6;
+    margin-right: 10px;
+}
+
+.post-info {
+    flex-grow: 1;
+}
+
+.post-user {
+    font-weight: bold;
+}
+
+.post-user span {
+    color: #666;
+}
+
+.post-time {
+    font-size: 14px;
+    color: #666;
+}
+
+.post-content {
+    margin-bottom: 20px;
+}
+
+.post-image-placeholder {
+    background-color: #eee;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.like-button, .repost-button, .comment-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+}
+
+.like-button:hover, .repost-button:hover, .comment-button:hover {
+    color: #333;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    background-color: #fff;
+    width: 250px; /* Largura da barra lateral direita */
+    padding: 20px;
+}
+
+.search-section {
+    margin-bottom: 40px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-box i {
+    color: #666;
+    margin-right: 10px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+}
+
+.trending-section {
+    margin-top: 20px; /* Espaçamento acima da seção de tendências */
+}
+
+.trending-section h2 {
+    font-size: 18px; /* Tamanho da fonte do título */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+.trending-section ul {
+    list-style-type: none;
+    padding-left: 0; /* Remove o preenchimento da esquerda */
+}
+
+.trending-section li {
+    margin-bottom: 10px; /* Espaçamento entre os itens da lista */
+    color: #3b82f6; /* Cor do texto */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+.trending-section li:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}

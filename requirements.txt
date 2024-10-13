@@ -5,3 +5,4 @@ python-multipart
 pillow
 bcrypt
 python-dotenv
+itsdangerous

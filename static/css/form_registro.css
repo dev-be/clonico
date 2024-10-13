@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, #6e00ff, #9b00ff);
+    background: linear-gradient(to bottom, #3b82f6, #9333ea);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -35,4 +35,20 @@ body {
 }
 .text-muted {
     color: rgba(255, 255, 255, 0.7) !important;
+}
+.btn-voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+
+}
+.btn-voltar:hover {
+    background-color: #fff;
+    color: #4B0082;
 }

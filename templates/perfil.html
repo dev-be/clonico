@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/static/images/clonico_icon.svg">
+    <title>Perfil do Jogador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/perfil.css?v=1.0">
+</head>
+
+<body>
+    <div class="layout">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon"><i class="icon-clonico logo-icon"></i></div>
+                <div class="logo-text">Meu Jogo</div>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-button" onclick="window.location.href='/feed'"><i class="fas fa-home"></i> Início</button>
+                <button class="nav-button" onclick="window.location.href='/profile'"><i class="fas fa-user"></i> Perfil</button>
+                <button class="nav-button"><i class="fas fa-gamepad"></i> Jogos</button>
+                <button class="nav-button"><i class="fas fa-user-friends"></i> Amigos</button>
+                <button class="nav-button"><i class="fas fa-trophy"></i> Conquistas</button>
+                <button class="nav-button"><i class="fas fa-cog"></i> Configurações</button>
+            </div>
+            <button class="logout-button" onclick="window.location.href='/logout'"><i class="fas fa-sign-out-alt"></i> Sair</button>
+        </div>
+
+        <div class="feed">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <h2>Perfil do Jogador</h2>
+                    <button class="btn">Editar</button>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="profile-picture">
+                        <img src="/static/images/default_profile.svg" alt="Foto de Perfil" />
+                    </div>
+                    <h3>{{ usuario.nome }}</h3>
+                    <p>@{{ usuario.username }}</p>
+                    
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 78%;"></div>
+                    </div>
+                    <p>Nível 42</p>
+                    <p>7800 / 10000 XP</p>
+                    <p class="text-muted">Gamer apaixonado por RPGs e FPS!</p>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <h4>1337</h4>
+                        <p>Jogos</p>
+                    </div>
+                    <div class="stat">
+                        <h4>89</h4>
+                        <p>Conquistas</p>
+                    </div>
+                    <div class="stat">
+                        <h4>215</h4>
+                        <p>Amigos</p>
+                    </div>
+                </div>
+            
+                <div class="favorites">
+                    <h5>Favoritos</h5>
+                    <ul>
+                        {% for interesse in interesses %}
+                            <li>{{ interesse.interesse }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            
+                <div class="achievements">
+                    <h5>Conquistas</h5>
+                    <div class="achievement">
+                        <i class="fas fa-trophy trofeu-amarelo"></i> Mestre das Sombras
+                    </div>
+                    <div class="achievement">
+                        <i class="fas fa-trophy trofeu-amarelo"></i> Lendário
+                    </div>
+                    <div class="achievement">
+                        <i class="fas fa-trophy trofeu-amarelo"></i> Colecionador
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
