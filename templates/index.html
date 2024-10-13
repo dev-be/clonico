@@ -22,8 +22,10 @@
         <h1>Encontre seu Player2</h1>
         <p>Conecte-se com gamers que compartilham sua paixão. Faça match, jogue junto e forme relacionamentos.</p>
         <div class="form-inline">
-            <input type="text" placeholder="Qual é o seu nick?">
-            <button>Começar</button>
+            <form id="usernameForm">
+                <input type="text" id="username" name="username" placeholder="Qual é o seu nick?">
+                <button type="submit">Começar</button>
+            </form>
         </div>
         <p>Ao se inscrever, você concorda com nossos <a href="#" style="color: white; text-decoration: underline;">Termos e Condições</a>.</p>
     </div>
@@ -55,6 +57,14 @@
         <a href="#">Termos de Serviço</a>
         <a href="#">Privacidade</a>
     </div>
+
+    <script>
+        document.getElementById('usernameForm').addEventListener('submit', function(e){
+            e.preventDefault();  // Evita a submissão do formulário
+            const username = document.getElementById('username').value;   // Pega o valor do campo de texto
+            window.location.href =`/login?username=${encodeURIComponent(username)}`;
+        });
+    </script>
 </body>
 
 </html>
