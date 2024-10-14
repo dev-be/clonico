@@ -160,18 +160,22 @@ async def post_feed(
     
     return RedirectResponse(url="/feed", status_code=303)
 
-@app.get("/profile", response_class=HTMLResponse)
+@app.get("/profile")
 def get_profile(
     request: Request,
     usuario: Usuario = Depends(get_current_user)):
 
-    interesses = usuario_repo.obter_interesses_usuario(usuario.id_usuario)
+    if usuario:
 
-    return template.TemplateResponse("perfil.html", {
-        "request": request,
-        "usuario": usuario,
-        "interesses": interesses
-    })
+        interesses = usuario_repo.obter_interesses_usuario(usuario.id_usuario)
+    
+        return template.TemplateResponse("perfil.html", {
+            "request": request,
+            "usuario": usuario,
+            "interesses": interesses
+        })
+
+    return RedirectResponse(url="/login?usuario_desconectado", status_code=303)
 
 if __name__ == "__main__":
  uvicorn.run("main:app", port=8000, reload=True)

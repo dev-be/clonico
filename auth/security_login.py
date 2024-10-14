@@ -6,7 +6,7 @@ from repositories import usuario_repo
 def get_current_user(request: Request):
     session_token = request.cookies.get("session_token")
     if not session_token:
-        raise HTTPException(status_code=403, detail="Not authenticated")
+        return None
 
     try:
         user_id = serializer.loads(session_token)
