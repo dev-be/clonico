@@ -1,19 +1,27 @@
+import os
 import re
+import shutil
 from typing import Optional
-from fastapi import FastAPI, Form, HTTPException, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+import uuid
+from fastapi import Depends, FastAPI, Form, HTTPException, Request, UploadFile
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 # from sqlalchemy import Session
 import uvicorn
 
 from auth.cookies import create_token, decode_token, remover_cookies
+from auth.security_login import get_current_user
+from auth.security_post import validation_post_success
+from models.post_model import Post
 from models.usuario_model import Usuario, Interesses
 from repositories import usuario_repo
+from repositories import posts_repo
 
 
 usuario_repo.criar_tabela()
 usuario_repo.insere_dados_interesse()
+posts_repo.criar_tabela_posts()
 
 app = FastAPI()
 
@@ -121,28 +129,45 @@ def logout(request: Request):
 
 @app.get("/feed")
 def get_root(request: Request):
-    return template.TemplateResponse("feed.html", {"request": request})
+    posts = posts_repo.obter_posts()
+    return template.TemplateResponse("feed.html", {"request": request, "posts": posts})
+
+@app.post("/post_feed")
+async def post_feed(
+    request: Request,
+    usuario_id: int = Depends(validation_post_success),
+    titulo: str = Form(...),
+    imagem: UploadFile = Form(...)):
+
+    if imagem:
+        unique_id =  uuid.uuid4()
+        extension = imagem.filename.split(".")[-1]
+        filename = f"{unique_id}.{extension}"
+        file_location = f"static/images/posts/{filename}"
+
+        directory = os.path.dirname(file_location)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        try:
+            with open(file_location, "wb") as buffer:
+                shutil.copyfileobj(imagem.file, buffer)
+        except Exception as e:
+            return JSONResponse(status_code=500, content={"error": f"Erro ao salvar a imagem: {str(e)}"})
+
+        post = Post(usuario_id=usuario_id, titulo=titulo,  imagem=file_location)
+        posts_repo.inserir_post(post)
+    
+    return RedirectResponse(url="/feed", status_code=303)
 
 @app.get("/profile", response_class=HTMLResponse)
-def get_profile(request: Request):
-    session_token = request.cookies.get("session_token")
+def get_profile(
+    request: Request,
+    usuario: Usuario = Depends(get_current_user)):
 
-    if not session_token:
-        raise HTTPException(status_code=401, detail="Usuário não autenticado")
+    interesses = usuario_repo.obter_interesses_usuario(usuario.id_usuario)
 
-    usuario_id = decode_token(session_token)
-
-    if usuario_id is None:
-        raise HTTPException(status_code=401, detail="Token de sessão inválido ou expirado")
-
-    usuario = usuario_repo.obter_dados_usuario(usuario_id)
-    if not usuario:
-        raise HTTPException(status_code=404, detail="Usuário não encontrado")
-
-    interesses = usuario_repo.obter_interesses_usuario(usuario_id)
-
-
-    return  template.TemplateResponse("perfil.html", {
+    return template.TemplateResponse("perfil.html", {
         "request": request,
         "usuario": usuario,
         "interesses": interesses
