@@ -27,5 +27,7 @@ SQL_OBTER_POSTS = """
     FROM 
         post
     INNER JOIN 
-        usuario ON post.id_usuario = usuario.id_usuario;
+        usuario ON post.id_usuario = usuario.id_usuario
+    ORDER BY 
+        post.data_criacao DESC;
 """
