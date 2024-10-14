@@ -29,21 +29,21 @@
 
     <!-- Feed Principal -->
     <main class="feed">
-      <form class="new-post">
+      <form class="new-post" action="/post_feed" method="post" enctype="multipart/form-data">
         <div class="post-input">
           <i class="fas fa-user-circle avatar-icon"></i>
-          <input type="text" placeholder="O que está jogando?" class="post-text-input">
+          <input type="text" id="titulo" name="titulo" placeholder="O que está jogando?" class="post-text-input" required>
         </div>
         <div class="post-actions">
           <label for="image-upload" class="image-upload-label">
             <i class="fas fa-image"></i>
-            <input type="file" id="image-upload" class="image-upload-input">
+            <input type="file" id="image-upload" name="imagem"  class="image-upload-input" accept=".jpg, .jpeg, .png">
           </label>
           <button class="post-button">Postar</button>
         </div>
       </form>
 
-      <div class="post-container">
+    <div class="post-container">
         <!-- Posts -->
         <div class="post-card">
           <div class="post-header">
