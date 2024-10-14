@@ -138,6 +138,8 @@ async def post_feed(
     usuario_id: int = Depends(validation_post_success),
     titulo: str = Form(...),
     imagem: UploadFile = Form(...)):
+    if usuario_id is None:
+        return RedirectResponse(url="/login?usuario_desconectado", status_code=303)
 
     if imagem:
         unique_id =  uuid.uuid4()
