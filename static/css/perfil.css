@@ -13,6 +13,7 @@ body {
 
 .layout {
     display: flex;
+    justify-content: space-between;
     height: 100vh; /* Altura total da janela */
 }
 
@@ -61,8 +62,8 @@ body {
     display: flex;
     align-items: center;
     font-size: 18px;
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 15px;
+    padding: 14px;
     color: #333;
     cursor: pointer;
     width: 100%;
