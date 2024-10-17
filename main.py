@@ -4,10 +4,9 @@ import shutil
 from typing import Optional
 import uuid
 from fastapi import Depends, FastAPI, Form, HTTPException, Request, UploadFile
-from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-# from sqlalchemy import Session
 import uvicorn
 
 from auth.cookies import create_token, decode_token, remover_cookies
