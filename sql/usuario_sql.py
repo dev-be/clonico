@@ -7,6 +7,7 @@ SQL_CRIAR_TABELA = ["""
     telefone VARCHAR(20) NOT NULL,
     data_nascimento DATE NOT NULL,
     senha TEXT NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     CONSTRAINT pk_usuario
         PRIMARY KEY (id_usuario AUTOINCREMENT)
     );
